@@ -1,6 +1,8 @@
 const http = require("http");
 const productRoutes = require("./routes/productRoutes");
 
+const PORT = process.env.PORT || 3008;
+
 const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
@@ -15,6 +17,6 @@ const server = http.createServer((req, res) => {
   productRoutes(req, res);
 });
 
-server.listen(3008, () => {
-  console.log("Products backend running on http://localhost:3008");
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`Products backend running on port ${PORT}`);
 });
